@@ -857,7 +857,9 @@ document.getElementById("rollButton").addEventListener("click", function () {
     rarity.type === "Easter Egg [1 in 13,333]" ||
     rarity.type === "Easter Bunny [1 in 133,333]" ||
     rarity.type === "Hellish Fire [1 in 6,666]" ||
-    rarity.type === "Isekai ♫ Lo-Fi [1 in 3,000]"
+    rarity.type === "Isekai ♫ Lo-Fi [1 in 3,000]" ||
+    rarity.type === "oPprEsSIOn [1 in ???]" ||
+    rarity.type === "Pumpkin [1 in 999]"
   ) {
     document.getElementById("result").innerText = "";
     const titleCont = document.querySelector(".container");
@@ -1020,6 +1022,10 @@ document.getElementById("rollButton").addEventListener("click", function () {
       hugeSuspenceAudio.play();
     } else if (rarity.type === "MSFU [1 in 333/333rd]") {
       msfuAudio.play();
+    } else if (rarity.type === "Pumpkin [1 in 999]") {
+      bigSuspenceAudio.play();
+    } else if (rarity.type === "oPprEsSIOn [1 in ???]") {
+      expOpeningAudio.play();
     } else if (rarity.type == "Silly Car :3 [1 in 1,000,000]") {
       silcarAudio.play();
       setTimeout(function () {
@@ -3877,6 +3883,100 @@ document.getElementById("rollButton").addEventListener("click", function () {
           rollCount1++;
           titleCont.style.visibility = "visible";
           heartAudio.play();
+        }, 100);
+        enableChange();
+      }, 9850); // Wait for 9.85 seconds
+    } else if (rarity.type === "Pumpkin [1 in 999]") {
+      document.body.className = "blackBg";
+      disableChange();
+
+      const container1 = document.getElementById("squareContainer");
+
+      function createSquare() {
+        const square = document.createElement("div");
+        square.className = "animated-square-orange";
+
+        square.style.left = Math.random() * 100 + "vw";
+        square.style.top = Math.random() * 100 + "vh";
+
+        container1.appendChild(square);
+
+        square.addEventListener("animationend", () => {
+          square.remove();
+        });
+      }
+
+      const squareInterval = setInterval(() => {
+        createSquare();
+      }, 100);
+
+      setTimeout(() => {
+        clearInterval(squareInterval);
+      }, 9350); // Stop after 9.35 seconds
+
+      const container = document.getElementById("starContainer");
+
+      for (let i = 0; i < 133; i++) {
+        const star = document.createElement("span");
+        star.className = "orange-star";
+        star.innerHTML = "●";
+
+        star.style.left = Math.random() * 100 + "vw";
+
+        const randomX = (Math.random() - 0.25) * 20 + "vw";
+        star.style.setProperty("--randomX", randomX);
+
+        const randomRotation = (Math.random() - 0.5) * 720 + "deg";
+        star.style.setProperty("--randomRotation", randomRotation);
+
+        star.style.animationDelay = i * 0.08 + "s";
+
+        container.appendChild(star);
+
+        star.addEventListener("animationend", () => {
+          star.remove();
+        });
+      }
+      for (let i = 0; i < 133; i++) {
+        const star = document.createElement("span");
+        star.className = "orange-star";
+        star.innerHTML = "○";
+
+        star.style.left = Math.random() * 100 + "vw";
+
+        const randomX = (Math.random() - 0.25) * 20 + "vw";
+        star.style.setProperty("--randomX", randomX);
+
+        const randomRotation = (Math.random() - 0.5) * 720 + "deg";
+        star.style.setProperty("--randomRotation", randomRotation);
+
+        star.style.animationDelay = i * 0.08 + "s";
+
+        container.appendChild(star);
+
+        star.addEventListener("animationend", () => {
+          star.remove();
+        });
+      }
+      setTimeout(function () {
+        document.body.className = "whiteFlash";
+      }, 8000);
+      setTimeout(function () {
+        document.body.className = "blackBg";
+      }, 9000);
+      setTimeout(() => {
+        document.body.className = "whiteFlash";
+        setTimeout(() => {
+          document.body.className = rarity.class;
+          addToInventory(title, rarity.class);
+          updateRollingHistory(title, rarity.type);
+          displayResult(title, rarity.type);
+          changeBackground(rarity.class);
+          rollButton.disabled = false;
+          rollCount++;
+          rollCount1++;
+          titleCont.style.visibility = "visible";
+          pumpkinAudio.play();
         }, 100);
         enableChange();
       }, 9850); // Wait for 9.85 seconds
@@ -8018,6 +8118,81 @@ document.getElementById("rollButton").addEventListener("click", function () {
         serAudio.play();
         titleCont.style.visibility = "visible";
       }
+    } else if (rarity.type === "oPprEsSIOn [1 in ???]") {
+      disableChange();
+      startAnimationA1();
+
+      setTimeout(() => {
+        document.body.style.backgroundImage = "url('files/backgrounds/exp_cutscene.gif')";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundPosition = "center";
+      }, 700)
+    
+      const container1 = document.getElementById("squareContainer");
+      const container = document.getElementById("starContainer");
+    
+      function createSquare() {
+        const square = document.createElement("div");
+        square.className = "animated-square-white";
+
+        square.style.left = Math.random() * 100 + "vw";
+        square.style.top = Math.random() * 100 + "vh";
+
+        container1.appendChild(square);
+
+        square.addEventListener("animationend", () => {
+          square.remove();
+        });
+      }
+    
+      setTimeout(() => {
+        clearInterval(squareInterval);
+      }, 20000); // Stop after 20 seconds
+    
+      for (let i = 0; i < 133; i++) {
+        const star = document.createElement("span");
+    
+        const starClasses = [
+          "white-star"
+        ];
+        star.className = starClasses[Math.floor(Math.random() * starClasses.length)];
+    
+        star.innerHTML = "▱";
+        star.style.left = Math.random() * 100 + "vw";
+    
+        const randomX = (Math.random() - 0.25) * 20 + "vw";
+        star.style.setProperty("--randomX", randomX);
+    
+        const randomRotation = (Math.random() - 0.5) * 720 + "deg";
+        star.style.setProperty("--randomRotation", randomRotation);
+    
+        star.style.animationDelay = i * 0.08 + "s";
+    
+        container.appendChild(star);
+    
+        star.addEventListener("animationend", () => {
+          star.remove();
+        });
+      }
+    
+      setTimeout(() => {
+        document.body.className = "whiteFlash";
+        document.body.style.backgroundImage = "";
+        setTimeout(() => {
+          document.body.className = rarity.class;
+          addToInventory(title, rarity.class);
+          displayResult(title, rarity.type);
+          updateRollingHistory(title, rarity.type);
+          changeBackground(rarity.class);
+          rollButton.disabled = false;
+          rollCount++;
+          rollCount1++;
+          titleCont.style.visibility = "visible";
+          oppAudio.play();
+        }, 100);
+        enableChange();
+      }, 20550); // Wait for 20.55 seconds
     } else if (
       rarity.type === "Silly Car :3 [1 in 1,000,000]" ||
       rarity.type === "Greg [1 in 50,000,000]" ||
@@ -8080,6 +8255,7 @@ document.getElementById("rollButton").addEventListener("click", function () {
         enableChange();
       }, 4400); // Wait for 4.4 seconds
     }
+    
   } else {
     addToInventory(title, rarity.class);
     displayResult(title, rarity.type);
@@ -8151,6 +8327,24 @@ function rollRarity() {
       class: "rareBgImg",
       chance: 10,
       titles: ["Divine", "Crystallized", "Radiant", "Gleaming", "Shimmering", "Glowing", "Luminous", "Brilliant", "Sparkling", "Dazzling"],
+    },
+    {
+      type: "Heart [1 in ♡♡♡]",
+      class: "heartBgImg",
+      chance: 10,
+      titles: ["Love", "Valentine", "Hearts"]
+    },
+    {
+      type: "Pumpkin [1 in 999]",
+      class: "pumpkinBgImg",
+      chance: 10,
+      titles: ["Pumpkin", "Jack-o'-lantern", "Halloween", "Spooky", "Ghostly", "Eerie", "Creepy", "Chilling", "Haunting", "Phantom"],
+    },
+    {
+      type: "oPprEsSIOn [1 in ???]",
+      class: "oppBgImg",
+      chance: 10,
+      titles: ["Oppression", "RU1N3D", "I N33D H3LP", "H3LP", "1'M TR4PP3D", "1'M STUCK", "1'M SC4RED", "1'M SORRY", "1'M S0RRY F0R EVERYTHING", "I'M SORRY FOR THE MESS", "WH4T D1D 1 D0", "PL3423 H3LP M3", "WH4T C4N 1 D0", "1T'S 4LL MY F4ULT"],
     },
     {
       type: "Epic [1 in 5]",
@@ -8687,7 +8881,7 @@ function rollRarity() {
     titles: ["Fire", "Craze", "Iridocyclitis: 902"],
   };
 
-  let randomNum = Math.random() * 800;
+  let randomNum = Math.random() * 850;
   let cumulativeChance = 90;
 
   if (rollCount % 333 === 0) {
@@ -9099,7 +9293,7 @@ const backgroundDetails = {
   polarrBgImg: { image: "files/backgrounds/polarr.png", audio: "polarrAudio" },
   ethershiftBgImg: { image: "files/backgrounds/ether.png", audio: "ethAudio" },
   msfuBgImg: { image: "files/backgrounds/msfu.png", audio: "msfuAudio" },
-  oppBgImg: { image: "files/backgrounds/oppression.jpg", audio: "oppAudio" },
+  oppBgImg: { image: "files/backgrounds/oppre.png", audio: "oppAudio" },
   norstaBgImg: { image: "files/backgrounds/norsta.png", audio: "norstaAudio" },
   sanclaBgImg: { image: "files/backgrounds/sancla.png", audio: "sanclaAudio" },
   silnigBgImg: { image: "files/backgrounds/silnig.png", audio: "silnigAudio" },
@@ -10400,7 +10594,8 @@ function getClassForRarity(rarity) {
       'sʜeɴvɪ✞∞ [1 in 77,777/7th]': 'special',
       'Easter Bunny [1 in 133,333]': 'eventE',
       'Easter Egg [1 in 13,333]': 'eventE',
-      'Isekai ♫ Lo-Fi [1 in 3,000]': 'under10k'
+      'Isekai ♫ Lo-Fi [1 in 3,000]': 'under10k',
+      'Pumpkin [1 in 999]': 'eventTitleHalloween',
   };
 
   return rarityClasses[rarity] || null;
