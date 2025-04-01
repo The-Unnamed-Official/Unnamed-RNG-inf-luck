@@ -3,7 +3,7 @@ let currentPage = 1;
 const itemsPerPage = 10;
 let rollCount = parseInt(localStorage.getItem("rollCount")) || 0;
 let rollCount1 = parseInt(localStorage.getItem("rollCount")) || 0;
-let cooldownTime = 200;
+let cooldownTime = 0;
 let currentAudio = null;
 let isChangeEnabled = true;
 let autoRollInterval = null;
@@ -8149,19 +8149,19 @@ function rollRarity() {
     {
       type: "Rare [1 in 4]",
       class: "rareBgImg",
-      chance: 10.5,
+      chance: 10,
       titles: ["Divine", "Crystallized", "Radiant", "Gleaming", "Shimmering", "Glowing", "Luminous", "Brilliant", "Sparkling", "Dazzling"],
     },
     {
       type: "Epic [1 in 5]",
       class: "epicBgImg",
-      chance: 10.34,
+      chance: 10,
       titles: ["Mythic", "Enchanted", "Majestic", "Regal", "Heroic", "Noble", "Exalted", "Fabled", "Exotic", "Glorious"],
     },
     {
       type: "Legendary [1 in 13]",
       class: "legendaryBgImg",
-      chance: 10.5,
+      chance: 10,
       titles: ["Immortal", "Celestial", "Eternal", "Transcendent", "Supreme", "Bounded", "Omniscient", "Omnipotent", "Ultimate", "Apex"],
     },
     {
@@ -8173,7 +8173,7 @@ function rollRarity() {
     {
       type: "Powered [1 in 40]",
       class: "poweredBgImg",
-      chance: 10.5,
+      chance: 10,
       titles: ["Undead", "Sidereum", "Glock", "Wind", "Lunar", "Solar", "Hazard", "Shattered", "Alien", "Veil"],
     },
     {
@@ -8185,439 +8185,439 @@ function rollRarity() {
     {
       type: "Flicker [1 in 67]",
       class: "flickerBgImg",
-      chance: 10.5,
+      chance: 10,
       titles: ["Glimmer", "Spark", "Flame", "Glow", "Pulse", "Twilight", "Flash", "Flare", "Beam", "Shine"],
     },
     {
       type: "Solarpower [1 in 67]",
       class: "solarpowerBgImg",
-      chance: 1.5,
+      chance: 10,
       titles: ["Hazard: Rays", "Ink: Leak", "Shattered: Beginning", "Alien: Abduction", "Veil: Nebula", "Nautilus", "Precious", "Glacier", "Bleeding", "Ink"],
     },
     {
       type: "Believer [1 in 80]",
       class: "belivBgImg",
-      chance: 10.25,
+      chance: 10,
       titles: ["Thoughts", "Graditude", "Fear: Fallen", "Optimist"],
     },
     {
       type: "Planet Breaker [1 in 99]",
       class: "plabreBgImg",
-      chance: 10.01,
+      chance: 10,
       titles: ["Explosion", "Death: Unalive", "Fear: Broken", "Space Dust"],
     },
     {
       type: "Unstoppable [1 in 112]",
       class: "unstoppableBgImg",
-      chance: 10.8941045669,
+      chance: 10,
       titles: ["Invincible", "Unyielding", "Indomitable", "Unbreakable", "Irresistible", "Unconquerable", "Chromatic: Genesis", "Chromatic: Exotic", "Chromatic", "Untouchable"],
     },
     {
       type: "Gargantua [1 in 143]",
       class: "gargBgImg",
-      chance: 10.699,
+      chance: 10,
       titles: ["Colossal", "Titanic", "Monumental", "Gigantic", "Mammoth", "Immense", "Enormous", "Vast", "Behemoth", "Leviathan"],
     },
     {
       type: "Memory [1 in 175]",
       class: "memBgImg",
-      chance: 10.57142,
+      chance: 10,
       titles: ["The Fallen"],
     },
     {
       type: "Wandering Spirit [1 in 150]",
       class: "wanspiBgImg",
-      chance: 10.67,
+      chance: 10,
       titles: ["Wandering Spirit"],
     },
     {
       type: "Frozen Fate [1 in 200]",
       class: "froBgImg",
-      chance: 10.5,
+      chance: 10,
       titles: ["Frozen Fate"],
     },
     {
       type: "Mysterious Echo [1 in 300]",
       class: "mysBgImg",
-      chance: 10.33,
+      chance: 10,
       titles: ["Mysterious Echo"],
     },
     {
       type: "Forgotten Whisper [1 in 450]",
       class: "forgBgImg",
-      chance: 10.22,
+      chance: 10,
       titles: ["Forgotten Whisper"],
     },
     {
       type: "Cursed Artifact [1 in 700]",
       class: "curartBgImg",
-      chance: 10.14,
+      chance: 10,
       titles: ["Cursed Artifact"],
     },
     {
       type: "Spectral Glare [1 in 850]",
       class: "specBgImg",
-      chance: 10.12,
+      chance: 10,
       titles: ["Spectral Glare"],
     },
     {
       type: "Shadow Veil [1 in 1,000]",
       class: "shadBgImg",
-      chance: 10.1,
+      chance: 10,
       titles: ["Shadow Veil"],
     },
     {
       type: "Nightfall [1 in 1,200]",
       class: "nighBgImg",
-      chance: 10.083,
+      chance: 10,
       titles: ["Nightfall"],
     },
     {
       type: "Void Walker [1 in 1,500]",
       class: "voiBgImg",
-      chance: 10.067,
+      chance: 10,
       titles: ["Void Walker"],
     },
     {
       type: "Silent Listener [1 in 2,200]",
       class: "silBgImg",
-      chance: 10.045,
+      chance: 10,
       titles: ["Silent Listener"],
     },
     {
       type: "Ghostly Embrace [1 in 2,800]",
       class: "ghoBgImg",
-      chance: 10.036,
+      chance: 10,
       titles: ["Ghostly Embrace"],
     },
     {
       type: "Endless Twilight [1 in 3,000]",
       class: "endBgImg",
-      chance: 10.033,
+      chance: 10,
       titles: ["Endless Twilight"],
     },
     {
       type: "Abyssal Shade [1 in 3,500]",
       class: "abysBgImg",
-      chance: 10.029,
+      chance: 10,
       titles: ["Abyssal Shade"],
     },
     {
       type: "Darkened Sky [1 in 4,200]",
       class: "darBgImg",
-      chance: 10.024,
+      chance: 10,
       titles: ["Darkened Sky"],
     },
     {
       type: "Twisted Light [1 in 5,000]",
       class: "twiligBgImg",
-      chance: 10.02,
+      chance: 10,
       titles: ["Twisted Light"],
     },
     {
       type: "LubbyJubby's Cherry Grove [1 in 5,666]",
       class: "lubjubBgImg",
-      chance: 10.01764913519,
+      chance: 10,
       titles: ["LubJub"],
     },
     {
       type: "Ethereal Pulse [1 in 6,000]",
       class: "ethpulBgImg",
-      chance: 10.017,
+      chance: 10,
       titles: ["Ethereal Pulse"],
     },
     {
       type: "Enigmatic Dream [1 in 7,500]",
       class: "eniBgImg",
-      chance: 10.013,
+      chance: 10,
       titles: ["Enigmatic Dream"],
     },
     {
       type: "Grim Destiny [1 in 8,500]",
       class: "griBgImg",
-      chance: 10.012,
+      chance: 10,
       titles: ["Grim Destiny"],
     },
     {
       type: "Celestial Dawn [1 in 12,000]",
       class: "celdawBgImg",
-      chance: 10.0083,
+      chance: 10,
       titles: ["Celestial Dawn"],
     },
     {
       type: "Fate's Requiem [1 in 15,000]",
       class: "fatreBgImg",
-      chance: 10.0067,
+      chance: 10,
       titles: ["Fate's Requiem"],
     },
     {
       type: "Fear [1 in 1,250]",
       class: "fearBgImg",
-      chance: 10.08,
+      chance: 10,
       titles: ["Fear"],
     },
     {
       type: "Shad0w [1 in 4,444]",
       class: "shaBgImg",
-      chance: 10.02250225022,
+      chance: 10,
       titles: ["Galactic", "Mysterious", "Friendly"],
     },
     {
       type: "Haunted Soul [1 in 2,000]",
       class: "hauBgImg",
-      chance: 10.05,
+      chance: 10,
       titles: ["Haunted Soul"],
     },
     {
       type: "Lost Soul [1 in 3,333]",
       class: "lostsBgImg",
-      chance: 10.03,
+      chance: 10,
       titles: ["Lost Soul"],
     },
     {
       type: "Found Soul [1 in 5,000]",
       class: "foundsBgImg",
-      chance: 10.02,
+      chance: 10,
       titles: ["Found Soul"],
     },
     {
       type: "Haunted Reality [1 in 5,500]",
       class: "hauntBgImg",
-      chance: 10.018,
+      chance: 10,
       titles: ["Haunted Reality"],
     },
     {
       type: "Devil's Heart [1 in 66,666]",
       class: "devilBgImg",
-      chance: 10.0015,
+      chance: 10,
       titles: ["Devil's Heart"],
     },
     {
       type: "Oblivion [1 in 200]",
       class: "oblBgImg",
-      chance: 10.499,
+      chance: 10,
       titles: ["The Truth Seeker"],
     },
     {
       type: "Spectral Whisper [1 in 288]",
       class: "spectralBgImg",
-      chance: 10.347222222,
+      chance: 10,
       titles: ["Haunted", "Ethereal", "Shadow", "Phantom", "Echo", "Apparition", "Wraith", "Shade", "Banshee", "Poltergeist"],
     },
     {
       type: "Isekai [1 in 300]",
       class: "isekaiBgImg",
-      chance: 10.333333333,
+      chance: 10,
       titles: ["Otherworldly", "Transported", "Duality: Konosuba", "Immersive: Re:Zero", "Immersive", "Otherworldly: No Game No Life", "Protagonist", "Summoning", "Fantasyland", "Duality"],
     },
     {
       type: "Emergencies [1 in 500]",
       class: "emerBgImg",
-      chance: 10.2,
+      chance: 10,
       titles: ["Urgent", "Crisis", "Crisis: Earthquake", "Danger: Fire", "Immediate", "Alert: Flood", "Rescue", "Alert", "Danger", "Response"],
     },
     {
       type: "Samurai [1 in 800]",
       class: "samuraiBgImg",
-      chance: 10.125,
+      chance: 10,
       titles: ["Warrior", "Bushido", "Martial: Katana", "Feudal: Ronin", "Honor", "Honor: Shogun", "Feudal", "Martial", "Loyalty", "Tradition"],
     },
     {
       type: "Starfall [1 in 600]",
       class: "starfallBgImg",
-      chance: 10.1666666666,
+      chance: 10,
       titles: ["Meteoric", "Stardust", "Cosmic", "Nebula", "Galactic", "Supernova", "Celestial", "Orbiting", "Comet", "Radiant"],
     },
     {
       type: "Phantom Stride [1 in 990]",
       class: "phaBgImg",
-      chance: 10.101010101,
+      chance: 10,
       titles: ["Silent", "Shadowy", "Elusive", "Wandering", "Spectral", "Mysterious", "Ghostly", "Drifting", "Veiled", "Hidden"],
     },
     {
       type: "Contortions [1 in 999]",
       class: "contBgImg",
-      chance: 10.1001001001,
+      chance: 10,
       titles: ["Flexibility", "Twisting", "Bending: Acrobatics", "Agility: Gymnastics", "Elasticity", "Contorting: Movability", "Bending", "Stretching", "Agility", "Contorting"],
     },
     {
       type: "Fright [1 in 1,075]",
       class: "frightBgImg",
-      chance: 10.093,
+      chance: 10,
       titles: ["Twilight: Iridescent Memory", "Glitch", "Arcane: Dark", "Exotic: Apex", "Ethereal", "Stormal: Hurricane", "Matrix", "Arcane: Legacy", "Starscourge", "Sailor: Flying Dutchman"],
     },
     {
       type: "Seraph's Wing [1 in 1,333]",
       class: "seraphwingBgImg",
-      chance: 10.0750187545,
+      chance: 10,
       titles: ["Angelic", "Divine", "Holy", "Winged", "Heavenly", "Celestial", "Radiant", "Ascended", "Graceful", "Blessed",],
     },
     {
       type: "Ether Shift [1 in 5,540]",
       class: "ethershiftBgImg",
-      chance: 10.0180505415,
+      chance: 10,
       titles: ["Warped", "Dimensional", "Vortex", "Parallel", "Quantum", "Portal", "Transcendent", "Astral", "Temporal", "Rifted"],
     },
     {
       type: "Hellish Fire [1 in 6,666]",
       class: "hellBgImg",
-      chance: 10.015,
+      chance: 10,
       titles: ["Devil", "Flame", "Fire", "Extinction", "Dead", "Lost Soul", "Burn: Soul", "Skull", "Collapse", "Doomsday"],
     },
     {
       type: "Demon Soul [1 in 9,999]",
       class: "demsoBgImg",
-      chance: 10.010001,
+      chance: 10,
       titles: ["Demon", "Soul", "Soul: Death", "Demon: Extinction", "Demon: Dead", "Demon: Lost Soul", "Soul: Skull"],
     },
     {
       type: "Cursed Mirage [1 in 11,111]",
       class: "cursedmirageBgImg",
-      chance: 10.00900009,
+      chance: 10,
       titles: ["Illusory", "Haunted", "Distorted", "Faded", "Enchanted", "Shimmering", "Twisted", "Charmed", "Eerie", "Phantasmal"],
     },
     {
       type: "Eonbreak [1 in 20,000]",
       class: "eonbreakBgImg",
-      chance: 10.005,
+      chance: 10,
       titles: ["Timeless", "Chronos", "Temporal", "Abyssal", "Infinite", "Endless", "Fractured", "Paradoxical", "Rifted", "Eternal"],
     },
     {
       type: "Unnamed [1 in 30,303]",
       class: "unnamedBgImg",
-      chance: 10.0033,
+      chance: 10,
       titles: ["Undefined: Name"],
     },
     {
       type: "Overture [1 in 25,641]",
       class: "overtureBgImg",
-      chance: 10.0039,
+      chance: 10,
       titles: ["Lightspeed", "Sky: The limit", "Arcane: Light", "Immense: Tarnished", "Vast: Electro", "Cloudpoint", "Glory", "Lord: History", "Starlight", "Momentum"],
     },
     {
       type: "HARV [1 in 33,333]",
       class: "harvBgImg",
-      chance: 10.00300003,
+      chance: 10,
       titles: ["Nightmare Sky", "Harvester", "Dullhan", "Cryptfire"]
     },
     {
       type: "Arcane Pulse [1 in 77,777]",
       class: "arcanepulseBgImg",
-      chance: 10.00128572714,
+      chance: 10,
       titles: ["Mystic", "Runic", "Enchanted", "Occult", "Magical", "Sorcerous", "Cabalistic", "Esoteric", "Divinatory", "Spellbound"],
     },
     {
       type: "Impeached [1 in 101,010]",
       class: "impeachedBgImg",
-      chance: 10.00099,
+      chance: 10,
       titles: ["Bloodlust", "Starscourge: Radiant, Symphony", "Bleeding: The Secret of Common", "Diaboli: The Secret of Divinus", "Surge: Infinity Overlord"],
     },
     {
       type: "Celestial Chorus [1 in 202,020]",
       class: "celestialchorusBgImg",
-      chance: 10.00049500049,
+      chance: 10,
       titles: ["Harmonic", "Symphonic", "Resonant", "Melodic", "Orchestral", "Ethereal", "Chiming", "Vibrant", "Sonic", "Sublime"],
     },
     {
       type: "Silly Car :3 [1 in 1,000,000]",
       class: "silcarBgImg",
-      chance: 10.0001,
+      chance: 10,
       titles: ["Vrom: Vrom"],
     },
     {
       type: "Greg [1 in 50,000,000]",
       class: "gregBgImg",
-      chance: 10.000002,
+      chance: 10,
       titles: ["Greg"],
     },
     {
       type: "Mintllie [1 in 500,000,000]",
       class: "mintllieBgImg",
-      chance: 10.0000002,
+      chance: 10,
       titles: ["Mintllie"],
     },
     {
       type: "Geezer [1 in 5,000,000,000]",
       class: "geezerBgGif",
-      chance: 10.00000002,
+      chance: 10,
       titles: ["Geezer"],
     },
     {
       type: "Polarr [1 in 50,000,000,000]",
       class: "polarrBgImg",
-      chance: 10.000000002,
+      chance: 10,
       titles: ["POLARR"],
     },
     {
       type: "H1di [1 in 9,890,089]",
       class: "h1diBgImg",
-      chance: 10.000001011113156,
+      chance: 10,
       titles: ["H1di"],
     },
     {
       type: "Rad [1 in 6,969]",
       class: "radBgImg",
-      chance: 10.01434926101,
+      chance: 10,
       titles: ["Rad", "Furry", ":3"],
     },
     {
       type: "Blodhest [1 in 25,252]",
       class: "blodBgImg",
-      chance: 10.00396008236,
+      chance: 10,
       titles: ["Furry: Ultimate", "Blodhest"],
     },
     {
       type: "Tuon [1 in 50,000]",
       class: "tuonBgImg",
-      chance: 10.002,
+      chance: 10,
       titles: ["Gato", "Speen", "Car: Maxwell"],
     },
     {
       type: "Unfair [1 in ###]",
       class: "astblaBgImg",
-      chance: 10.01,
+      chance: 10,
       titles: ["Astrald BLACK"],
     },
     {
       type: "GD Addict [1 in ###]",
       class: "astredBgImg",
-      chance: 10.05,
+      chance: 10,
       titles: ["Astrald RED"],
     },
     {
       type: "Qbear [1 in 35,555]",
       class: "qbearBgImg",
-      chance: 10.00281254394,
+      chance: 10,
       titles: ["Qbear", "Risky Gato", "Samurai Gato", "Gato: Wew"],
     },
     {
       type: "Light [1 in 29,979]",
       class: "lightBgImg",
-      chance: 10.0033356683,
+      chance: 10,
       titles: ["Speed of Light", "Light: Feather", "Light", "Bright"],
     },
     {
       type: "X1sta [1 in 230,444]",
       class: "x1staBgImg",
-      chance: 10.0004339449,
+      chance: 10,
       titles: ["Corrupt", "X1sta", "Artist"],
     },
     {
       type: "Easter Egg [1 in 13,333]",
       class: "esteggBgImg",
-      chance: 10.0075001875,
+      chance: 10,
       titles: ["Secret Egg", "Easter", "Candy"],
     },
     {
       type: "Easter Bunny [1 in 133,333]",
       class: "estbunBgImg",
-      chance: 10.00075000187,
+      chance: 10,
       titles: ["Secret Bunny", "Easter", "Bunny"],
     },
     {
       type: "Isekai ♫ Lo-Fi [1 in 3,000]",
       class: "isekailofiBgImg",
-      chance: 10.033,
+      chance: 10,
       titles: ["Isekai", "Singing", "Chill", "Calm"]
     }
   ];
@@ -8625,35 +8625,35 @@ function rollRarity() {
   const abominationRarity = {
     type: "Abomination [1 in 1,000,000/20th]",
     class: "aboBgImg",
-    chance: 0,
+    chance: 10,
     titles: ["Chaos", "Experiment: 902", "Damaged", "Assistance"],
   };
 
   const iridocyclitisVeilRarity = {
     type: "Iridocyclitis Veil [1 in 5,000/50th]",
     class: "iriBgImg",
-    chance: 0,
+    chance: 10,
     titles: ["Cyclithe", "Veilborne", "Hemovail", "Abomination: 902"],
   };
 
   const ShenviiRarity = {
     type: "sʜeɴvɪ✞∞ [1 in 77,777/7th]",
     class: "shenviiBgImg",
-    chance: 0,
+    chance: 10,
     titles: ["Cat", "Unforgettable", "Pookie", "Orb: 902", "Infinity"],
   };
 
   const orbRarity = {
     type: "ORB [1 in 55,555/30th]",
     class: "orbBgImg",
-    chance: 0.00019,
+    chance: 10,
     titles: ["Energy", "Iris: 902", "Power"],
   }
 
   const experimentRarity = {
     type: "Experiment [1 in 100,000/10th]",
     class: "expBgImg",
-    chance: 0,
+    chance: 10,
     titles: ["1106", "1073", "1105", "905", "302", "1130", "1263", "1005", "1473", "1748",
             "899", "1157", "1288", "1203", "1024", "1702", "786", "1684", "1337", "912",
             "1987", "1405", "771", "1883", "1294", "1772", "902", "1526", "1759", "666"],
@@ -8662,33 +8662,33 @@ function rollRarity() {
   const veilRarity = {
     type: "Veil [1 in 50,000/5th]",
     class: "veilBgImg",
-    chance: 0,
+    chance: 10,
     titles: ["Fight", "Peace", "MSFU: 902"],
   };
 
   const blindRarity = {
     type: "BlindGT [1 in 2,000,000/15th]",
     class: "blindBgImg",
-    chance: 0,
+    chance: 10,
     titles: ["Moderator", "Moderator: 902"],
   };
 
   const msfuRarity = {
     type: "MSFU [1 in 333/333rd]",
     class: "msfuBgImg",
-    chance: 0.3003003003,
+    chance: 10,
     titles: ["Metal", "Universe", "Veil: 902"],
   };
 
   const fireCrazeRarity = {
     type: "FireCraze [1 in 4,200/69th]",
     class: "crazeBgImg",
-    chance: 0.01,
+    chance: 10,
     titles: ["Fire", "Craze", "Iridocyclitis: 902"],
   };
 
-  let randomNum = Math.random() * 500;
-  let cumulativeChance = 100;
+  let randomNum = Math.random() * 800;
+  let cumulativeChance = 90;
 
   if (rollCount % 333 === 0) {
     cumulativeChance += msfuRarity.chance;
@@ -8859,10 +8859,10 @@ document
 
     if (isVisible) {
       inventorySection.style.visibility = "visible";
-      this.textContent = "Hide Inventory";
+      this.textContent = "Hide Inf Luck Inventory";
     } else {
       inventorySection.style.visibility = "hidden";
-      this.textContent = "Show Inventory";
+      this.textContent = "Show Inf Luck Inventory";
     }
   });
 
@@ -10206,7 +10206,7 @@ autoRollButton.addEventListener("click", () => {
 function startAutoRoll() {
   autoRollInterval = setInterval(() => {
     document.getElementById("rollButton").click();
-  },99);
+  },0);
   autoRollButton.textContent = "Auto Roll: On";
   console.log("Rolling...");
   autoRollButton.classList.remove("off");
@@ -10263,97 +10263,30 @@ function createHeart() {
 
 setInterval(createHeart, 33);
 
-const secretKey = 'ImpeachedGlazer';
+let playTime = parseInt(localStorage.getItem('playTime')) || 0;
 
-document.getElementById('saveButton').addEventListener('click', () => {
-  const data = JSON.stringify(localStorage);
+const timerDisplay = document.getElementById('timer');
 
-  const encryptedData = CryptoJS.AES.encrypt(data, secretKey).toString();
-
-  const blob = new Blob([encryptedData], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'localStorageData.json';
-  a.click();
-
-  URL.revokeObjectURL(url);
-});
-
-function showStatusMessage(message, duration = 2000) {
-  const status = document.getElementById('status');
-  status.textContent = message;
-  status.classList.add('showStatus');
-
-  setTimeout(() => {
-      status.classList.remove('showStatus');
-      setTimeout(() => (status.style.display = 'none'), 500);
-  }, duration);
+function formatTime(seconds) {
+  const hrs = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+  return [
+    hrs.toString().padStart(2, '0'),
+    mins.toString().padStart(2, '0'),
+    secs.toString().padStart(2, '0')
+  ].join(':');
 }
 
-    let playTime = parseInt(localStorage.getItem('playTime')) || 0;
-    
-    const timerDisplay = document.getElementById('timer');
+timerDisplay.textContent = formatTime(playTime);
 
-    function formatTime(seconds) {
-      const hrs = Math.floor(seconds / 3600);
-      const mins = Math.floor((seconds % 3600) / 60);
-      const secs = seconds % 60;
-      return [
-        hrs.toString().padStart(2, '0'),
-        mins.toString().padStart(2, '0'),
-        secs.toString().padStart(2, '0')
-      ].join(':');
-    }
-
-    timerDisplay.textContent = formatTime(playTime);
-
-    setInterval(() => {
-      playTime++;
-      timerDisplay.textContent = formatTime(playTime);
-      localStorage.setItem('playTime', playTime);
-      checkAchievements();
-      updateAchievementsList();
-    }, 1000);
-
-document.getElementById('importButton').addEventListener('click', () => {
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = '.json';
-
-  input.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const encryptedData = e.target.result;
-
-          const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
-          const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
-
-          const importedData = JSON.parse(decryptedData);
-
-          Object.keys(importedData).forEach(key => {
-            localStorage.setItem(key, importedData[key]);
-          });
-
-                  showStatusMessage("Data imported successfully! Refreshing...", 1500);
-
-                  setTimeout(() => {
-                      location.reload();
-                  }, 1500);
-              } catch (error) {
-                  showStatusMessage("Error: Invalid file format.");
-              }
-          };
-          reader.readAsText(file);
-      }
-  });
-
-  input.click();
-});
+setInterval(() => {
+  playTime++;
+  timerDisplay.textContent = formatTime(playTime);
+  localStorage.setItem('playTime', playTime);
+  checkAchievements();
+  updateAchievementsList();
+}, 1000);
 
 const rollingHistory = [];
 
